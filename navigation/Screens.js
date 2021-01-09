@@ -15,6 +15,20 @@ const Drawer = createDrawerNavigator();
 
 import CustomDrawerContent from './Menu';
 
+function LoginStack(props) {
+    return (
+        <Stack.Navigator mode="card" headerMode="screen" initialRouteName="LoginScreen">
+            <Stack.Screen
+                name="LoginScreen"
+                component={Login}
+                options={({ ...props }) => ({
+                    title: 'Login',
+                    headerLeft: null
+                })}
+            />
+        </Stack.Navigator>
+    )
+}
 function HomeStack(props) {
     return (
         <Stack.Navigator mode="card" headerMode="screen" initialRouteName="HomeScreen">
@@ -123,7 +137,7 @@ export default function MainStack(props) {
                 }}
                 initialParams={{ params: { initialRoots: props } }}
                 component={DrawerStack} />
-
+            <Stack.Screen name="LoginStack" component={LoginStack} initialParams="LoginScreen" />
         </Stack.Navigator>
     )
 }
